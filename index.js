@@ -19,6 +19,13 @@ const port=5000
 myserver.use(cors({origin:"*"}))
 myserver.use(bodyParser.json())
 
+
+myserver.get("/",(req,res)=>{
+    res.json({
+        message : "Api run"
+    })
+})
+
 myserver.post("/form",async(req,res)=>{
     const userdata=await Data(req.body)
     const savedata=await userdata.save()
