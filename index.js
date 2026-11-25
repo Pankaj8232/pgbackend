@@ -58,7 +58,7 @@ myserver.post("/enquiry",async(req,res)=>{
 
 
 myserver.get("/enquiry",async(req,res)=>{
-    const enquirydata = await Enquiry.find()
+    const enquirydata = await Enquiry.find({})
     res.status(200).json(enquirydata)
 })
 
