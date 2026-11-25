@@ -41,7 +41,7 @@ myserver.post("/form",async(req,res)=>{
     }
 })
 
-myserver.post("/enquiry",async(req,res)=>{
+myserver.post("/addenquiry",async(req,res)=>{
     const enquirydata=await Enquiry(req.body)
     const savedata=await enquirydata.save()
 
