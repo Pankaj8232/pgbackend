@@ -3,15 +3,14 @@ const express=require("express")
 const myserver=express()
 const cors=require("cors")
 const bodyParser=require("body-parser")
-const Data = require("./config/users")
-const Enquiry = require("./config/enquiry")
-const Login = require("./config/register")
+const Data = require("./data/users")
+
 require("./config/mongodb")
-
-
-const Products = require("./config/products")
-const Admin = require("./config/admin")
-const Booking = require("./config/book")
+const Enquiry = require("./data/enquiry")
+const Login = require("./data/register")
+const Products = require("./data/products")
+const Admin = require("./data/admin")
+const Booking = require("./data/book")
 
 
 const port=5000
@@ -63,7 +62,7 @@ myserver.get("/enquiry",async(req,res)=>{
 })
 
 
-myserver.post("/login",async(req,res)=>{
+myserver.post("/addlogin",async(req,res)=>{
     const registerdata=await Login(req.body)
     const savedata=await registerdata.save()
 
@@ -87,7 +86,7 @@ myserver.get("/login",async(req,res)=>{
 
 
 
-myserver.post("/products",async(req,res)=>{
+myserver.post("/addproducts",async(req,res)=>{
     const productdata = await Products(req.body)
     const savedata = await productdata.save()
 
@@ -110,7 +109,7 @@ myserver.get("/products",async(req,res)=>{
 
 
 
-myserver.post("/admindata", async(req,res)=>{
+myserver.post("/addadmindata", async(req,res)=>{
     const admindata = await Admin(req.body)
     const savedata = await admindata.save()
 
@@ -133,7 +132,7 @@ myserver.get("/admindata", async(req,res)=>{
 
 
 
-myserver.post("/booking", async(req,res)=>{
+myserver.post("/addbooking", async(req,res)=>{
     const bookingdata = await Booking(req.body)
     const savedata = await bookingdata.save()
 
